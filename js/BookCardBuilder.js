@@ -2,6 +2,11 @@ function buildDiv() {
   return document.createElement('div');
 }
 
+function deleteBook(book) {
+  bookIndex = myLibrary.indexOf(book);
+  myLibrary.splice(bookIndex, 1);
+}
+
 function buildBookCard(book) {
   // Card container
   const cardElement = buildDiv();
@@ -26,17 +31,29 @@ function buildBookCard(book) {
   cardElement.appendChild(cardBody);
 
   // Card Content
+  // Title
   const cardTitle = document.createElement('h5');
   cardTitle.classList.add('card-title');
   cardTitle.innerText = book['title'];
 
+  // Author
   const cardText = document.createElement('p');
   cardText.classList.add('card-text');
   cardText.innerText = `Authored by: ${book['author']}`;
 
+  // Delete button
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('btn', 'btn-danger');
+  deleteButton.innerText = 'Delete book';
+  deleteButton.addEventListener('click', () => {
+    deleteBook(book)
+    reRenderBooks();
+    deleteButton.removeEventListener('click');
+  })
 
   cardBody.appendChild(cardTitle);
   cardBody.appendChild(cardText);
+  cardBody.appendChild(deleteButton);
 
   return cardElement;
 }
