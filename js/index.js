@@ -1,10 +1,10 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+function Book(attrs) {
+  this.title = attrs.title;
+  this.author = attrs.author;
+  this.pages = attrs.pages;
+  this.read = attrs.read;
 
   this.info = function() {
     readStatus = this.read ? 'read' : 'not read yet';
@@ -13,33 +13,86 @@ function Book(title, author, pages, read) {
   }
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  const newBook = new Book(title, author, pages, read);
+function addBookToLibrary(bookAttributes) {
+  const newBook = new Book(bookAttributes);
 
-  myLibrary.push(newBook);
+  myLibrary.unshift(newBook);
 };
 
 // Sample addition to library
 
 const sampleBooks = [
-  ['People We Meet on Vacation', 'Emily Henry', 364, false],
-  ['The Love Hypothesis', 'Ali Hazelwood', 384, false],
-  ['Head First Java', 'Katy Sierra', 688, true]
+  {
+    title: 'People We Meet on Vacation',
+    author: 'Emily Henry',
+    pages: 364,
+    read: false
+  },
+  {
+    title: 'The Love Hypothesis',
+    author: 'Ali Hazelwood',
+    pages: 384,
+    read: false
+  },
+  {
+    title: 'Head First Java',
+    author: 'Katy Sierra',
+    pages: 688,
+    read: true
+  },
 ]
 
 sampleBooks.forEach(bookAttributes => {
-  addBookToLibrary(...bookAttributes);
+  addBookToLibrary(bookAttributes);
 });
 
 // Display books
-myLibrary.forEach(book => {
-  const card = buildBookCard(book);
-  document.getElementById('main-container').appendChild(card);
-});
+function renderBooks() {
+  const row = document.createElement('div');
+  row.classList.add('row') ;
+  document.getElementById('book-collection').appendChild(row);
+
+  myLibrary.forEach(book => {
+    const column = document.createElement('div');
+    column.classList.add('col-4');
+
+    row.appendChild(column);
+
+    const card = buildBookCard(book);
+    column.appendChild(card);
+    // document.getElementById('main-container').appendChild(card);
+  });
+}
+
+function reRenderBooks() {
+  document.getElementById('book-collection').innerHTML = '';
+  renderBooks();
+}
+
+renderBooks();
 
 // New Book toggle
 
 const newBookButton = document.getElementById('new-book-toggle');
 newBookButton.addEventListener('click', () => {
   document.getElementById('new-book-form').classList.toggle('d-none')
+});
+
+const addBookButton = document.getElementById('add-to-collection');
+addBookButton.addEventListener('click', (event) => {
+  event.preventDefault(); // Don't submit
+
+  const title = document.getElementById('name').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  const read = document.getElementById('has-read').checked;
+  const bookAttributes = {
+    title,
+    author,
+    pages,
+    read
+  };
+
+  addBookToLibrary(bookAttributes);
+  reRenderBooks();
 });
