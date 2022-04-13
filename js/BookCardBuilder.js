@@ -41,6 +41,34 @@ function buildBookCard(book) {
   cardText.classList.add('card-text');
   cardText.innerText = `Authored by: ${book['author']}`;
 
+  // Read toggle
+  const readToggleId = `has-read-${myLibrary.indexOf(book)}`
+  const readToggleContainer = document.createElement('div');
+  readToggleContainer.classList.add('form-check', 'form-switch');
+
+  const readToggleInput = document.createElement('input');
+  readToggleInput.setAttribute('type', 'checkbox');
+  readToggleInput.setAttribute('role', 'switch');
+  readToggleInput.classList.add('form-check-input');
+  readToggleInput.setAttribute('id', readToggleId);
+  readToggleInput.checked = book.read;
+
+  const readToggleLabel = document.createElement('label');
+  readToggleLabel.setAttribute('for', readToggleId);
+  readToggleLabel.classList.add('form-check-label');
+  readToggleLabel.textContent = 'Read?'
+
+  readToggleContainer.appendChild(readToggleInput);
+  readToggleContainer.appendChild(readToggleLabel);
+
+  // Attach handler for read toggle
+
+  readToggleInput.addEventListener('click', (e) => {
+    book.read = !book.read
+    // readToggleInput.checked = book.read;
+    reRenderBooks();
+  });
+
   // Delete button
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('btn', 'btn-danger');
@@ -53,6 +81,7 @@ function buildBookCard(book) {
 
   cardBody.appendChild(cardTitle);
   cardBody.appendChild(cardText);
+  cardBody.appendChild(readToggleContainer);
   cardBody.appendChild(deleteButton);
 
   return cardElement;
