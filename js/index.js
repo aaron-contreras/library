@@ -78,9 +78,14 @@ newBookButton.addEventListener('click', () => {
   document.getElementById('new-book-form').classList.toggle('d-none')
 });
 
-const addBookButton = document.getElementById('add-to-collection');
-addBookButton.addEventListener('click', (event) => {
-  event.preventDefault(); // Don't submit
+const newBookForm = document.getElementById('new-book-form');
+newBookForm.addEventListener('submit', (event) => {
+
+  // Handle form validation
+  event.preventDefault();
+
+  newBookForm.checkValidity();
+  newBookForm.reportValidity();
 
   const title = document.getElementById('name').value;
   const author = document.getElementById('author').value;
@@ -95,4 +100,8 @@ addBookButton.addEventListener('click', (event) => {
 
   addBookToLibrary(bookAttributes);
   reRenderBooks();
+
+  // Reset form
+  newBookForm.reset();
 });
+

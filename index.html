@@ -17,17 +17,17 @@
       <button id="new-book-toggle" class="btn btn-primary">New Book</button>
       <form id="new-book-form" class="d-none">
         <div class="form-floating mb-3">
-          <input id="name" class="form-control" type="text" placeholder="Head First Java"/>
+          <input id="name" class="form-control" type="text" placeholder="Head First Java" required/>
           <label for="name">Name</label>
         </div>
 
         <div class="form-floating mb-3">
-          <input id="author" class="form-control" type="text" placeholder="Katy Sierra"/>
+          <input id="author" class="form-control" type="text" placeholder="Katy Sierra" required/>
           <label for="author">Author</label>
         </div>
 
         <div class="form-floating mb-3">
-          <input id="pages" class="form-control" type="number" placeholder=688/>
+          <input id="pages" class="form-control" type="number" placeholder=688 min=1 />
           <label for="pages">Number of pages</label>
         </div>
 
@@ -36,7 +36,7 @@
           <label class="form-check-label" for="has-read">Read?</label>
         </div>
 
-        <button type="submit" id="add-to-collection" class="btn btn-success">Add to my collection</button>
+        <input type="submit" id="add-to-collection" class="btn btn-success" value="Add to my collection"/>
       </form>
 
       <div id="book-collection"></div>
