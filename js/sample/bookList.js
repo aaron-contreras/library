@@ -44,12 +44,6 @@ const sampleBooks = [
     read: false
   },
   {
-    title: 'Mark Zuckerbeg - In His Own Words',
-    author: 'George Beahm',
-    pages: 215,
-    read: true
-  },
-  {
     title: 'Scar Island',
     author: 'Dan Gemeinhart',
     pages: 249,

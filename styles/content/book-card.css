@@ -34,15 +34,7 @@
   --book-control-container-font-size: var(--book-author-font-size);
 }
 .bg-book-cover {
-  background-color:#6F1D1B;
-  background-color: #451F55;
-  background-color: #22162B;
-  background-color: #011638;
-  background-color: #A37B73;
-  background-color: #8E4A49;
-  background-color: #5F464B;
-  background-color: #4C1E4F;
-  background-color: #37371F;
+  background-color: var(--book-cover-color);
 }
 .gray-border {
   border-color: #222 !important;
@@ -79,6 +71,7 @@
   height: var(--front-cover-height);
   border: var(--standard-border-width) solid black;
   border-radius: var(--standard-border-width) 0px 0px var(--standard-border-width);
+  box-shadow: 0px 15px 12px rgba(0, 0, 0, 0.078);
 }
 
 .highlight {
@@ -99,6 +92,7 @@
   width: var(--back-cover-width);
   height: var(--back-cover-height);
   border: var(--standard-border-width) solid black;
+  box-shadow: 10px 35px 17px rgba(0, 0, 0, 0.118);
 }
 
 .top-pages {
@@ -129,12 +123,19 @@
   background-image: repeating-linear-gradient(90deg, #000, #000 2px, #dbdbdb 2px, #dbdbdb 4px);
 }
 
-.control-container {
-  z-index: 10000 !important;
+.control-container-wrapper {
+  z-index: 100000 !important;
 }
 
 .control-container .row {
   border-radius: 10px 10px 0 0 ;
+}
+
+.control-container .row .btn {
+  border: 4px solid rgba(237, 245, 252, 0.8);
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .bg-light-blue {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-light">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,40 +12,81 @@
   <title>Library</title>
 </head>
 <body>
-  <div class="bg-light p-3">
-    <h1 class="text-center">Even Better Reads</h1>
+  <div class="bg-light py-5">
+    <header class="text-center">
+      <h1 class="title">Even Better Reads</h1>
+      <p class="subtitle">A collection of your reading list. Think of it as a To-do list for your library.</p>
+    </header>
 
-    <main class="container bg-light" id="main-container">
-      <button id="new-book-toggle" class="btn btn-primary">New Book</button>
-      <form id="new-book-form" class="d-none">
-        <div class="form-floating mb-3">
-          <input id="name" class="form-control" type="text" placeholder="Head First Java" required/>
-          <label for="name">Name</label>
+    <section class="container bg-light mb-5" id="new-book-container">
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <button id="new-book-toggle" class="btn btn-secondary mb-4 w-100">Add a book</button>
         </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <form id="new-book-form" class="d-none mb-5" >
+            <div class="row">
+              <div class="col">
+                <div class="form-floating mb-3">
+                  <input id="name" class="form-control" type="text" placeholder="Head First Java" required/>
+                  <label for="name">Title</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-floating mb-3">
+                  <input id="author" class="form-control" type="text" placeholder="Katy Sierra" required/>
+                  <label for="author">Author</label>
+                </div>
+              </div>
+            </div>
+            
 
-        <div class="form-floating mb-3">
-          <input id="author" class="form-control" type="text" placeholder="Katy Sierra" required/>
-          <label for="author">Author</label>
+            
+            <div class="row">
+              <div class="col">
+                <div class="form-floating mb-3">
+                  <input id="pages" class="form-control" type="number" placeholder=688 min=1 />
+                  <label for="pages">Number of pages</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="has-read">
+                  <label class="form-check-label" for="has-read">Read?</label>
+                </div>
+              </div>
+            </div>
+              <input type="submit" id="add-to-collection" class="btn btn-success w-100" value="Add to my collection"/>
+          </form>
         </div>
+      </div>
 
-        <div class="form-floating mb-3">
-          <input id="pages" class="form-control" type="number" placeholder=688 min=1 />
-          <label for="pages">Number of pages</label>
+      
+      <section>
+        <div class="collection-header mb-5">
+          <hr>
+          <h2 class="text-center">My collection</h2>
+          <hr>
         </div>
-
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="has-read">
-          <label class="form-check-label" for="has-read">Read?</label>
-        </div>
-
-        <input type="submit" id="add-to-collection" class="btn btn-success" value="Add to my collection"/>
-      </form>
-
-      <div id="book-collection"></div>
-      <!-- Library inserted here -->
+        <div class="d-flex flex-wrap justify-content-center" id="book-collection"></div>
+        <!-- Library inserted here -->
+      </section>
     </main>
   </div>
 
+
+  <footer class="d-flex justify-content-end bg-light py-3 px-2">
+
+        <a href="https://github.com/aaron-contreras/">
+          <i class="bi bi-github text-secondary"></i>
+        </a>
+        <span>
+        &nbsp;Built by Aaron Contreras
+      </span>
+  </footer>
+  <script src="./js/content/bookCoverColors.js"></script>
   <script src="./js/sample/bookList.js"></script>
   <script src="./js/content/bookCard.js"></script>
   <script src="./js/index.js"></script>
