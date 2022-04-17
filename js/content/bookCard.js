@@ -82,8 +82,7 @@ function buildBookCard(book) {
   // Attach handler for read toggle
 
   readToggleInput.addEventListener('click', (e) => {
-    book.read = !book.read
-    // readToggleInput.checked = book.read;
+    book.toggleRead();
     reRenderBooks();
   });
 
@@ -92,8 +91,6 @@ function buildBookCard(book) {
   // Button column
   const buttonRow = buildDiv();
   buttonRow.classList.add('row');
-  // const buttonColumn = buildDiv();
-  // buttonColumn.classList.add('col', 'text-center');
 
   // Delete button
   const deleteButton = document.createElement('button');
