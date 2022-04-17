@@ -5,6 +5,7 @@ function Book(attrs) {
   this.author = attrs.author;
   this.pages = attrs.pages;
   this.read = attrs.read;
+  this.coverColor = bookCoverColors[Math.floor(Math.random() * bookCoverColors.length)];
 
   this.info = function() {
     readStatus = this.read ? 'read' : 'not read yet';
@@ -29,24 +30,10 @@ sampleBooks.forEach(bookAttributes => {
 
 // Display books
 function renderBooks() {
-  const rowContainer = document.createElement('div');
-  rowContainer.classList.add('container');
-
-  const row = document.createElement('div');
-  row.classList.add('row') ;
-  rowContainer.append(row);
-
   myLibrary.forEach(book => {
-    const column = document.createElement('div');
-    column.classList.add('col', 'd-flex', 'justify-content-center', 'mb-2');
-
-    row.appendChild(column);
-
     const card = buildBookCard(book);
-    column.appendChild(card);
+    document.getElementById('book-collection').append(card);
   });
-
-  document.getElementById('book-collection').appendChild(rowContainer);
 }
 
 function reRenderBooks() {
@@ -60,7 +47,10 @@ renderBooks();
 
 const newBookButton = document.getElementById('new-book-toggle');
 newBookButton.addEventListener('click', () => {
-  document.getElementById('new-book-form').classList.toggle('d-none')
+  document.getElementById('new-book-form').classList.toggle('d-none');
+  newBookButton.textContent = newBookButton.textContent === 'Add a book' ? 'Close form' : 'Add a book'
+  newBookButton.classList.toggle('bg-dark');
+  // newBookButton.classList.toggle('mb-5');
 });
 
 const newBookForm = document.getElementById('new-book-form');

@@ -11,15 +11,16 @@ function buildBookCard(book) {
 
   // Card container v2
   const bookContainer = buildDiv();
-  bookContainer.classList.add('book-container');
+  bookContainer.classList.add('book-container', 'mx-2', 'mb-4');
 
   // Front cover
   const frontCover = buildDiv();
   frontCover.classList.add(
-    'front-cover', 'bg-book-cover', 'bg-gradient',
+    'front-cover', 'bg-gradient',
     'gray-border', 'text-light', 'd-flex', 'flex-column',
     'justify-content-evenly'
   );
+  frontCover.style.backgroundColor =  book.coverColor;
 
   // Title
   const title = document.createElement('p');
@@ -48,13 +49,16 @@ function buildBookCard(book) {
 
   // Control container
 
+  const controlContainerWrapper = buildDiv();
+  controlContainerWrapper.classList.add('container', 'control-container-wrapper');
+
   const controlContainer = buildDiv();
   controlContainer.classList.add(
     'control-container', 'container', 'text-dark'
   );
 
   const readToggleRow = buildDiv();
-  readToggleRow.classList.add('row', 'pt-2', 'pb-1', 'bg-light-blue');
+  readToggleRow.classList.add('row', 'pt-2', 'pb-1', 'bg-light-blue', 'readToggleRow');
 
   const readColumn = buildDiv();
   readColumn.classList.add('col', 'h4', 'd-flex', 'align-items-center', 'justify-content-center', 'mb-0');
@@ -111,7 +115,9 @@ function buildBookCard(book) {
   controlContainer.append(readToggleRow);
   controlContainer.append(buttonRow);
 
-  frontCover.append(controlContainer);
+  controlContainerWrapper.append(controlContainer);
+
+  frontCover.append(controlContainerWrapper);
   // Highlight
 
   const highlight = buildDiv();
@@ -135,7 +141,8 @@ function buildBookCard(book) {
 
   // Back cover
   const backCover = buildDiv();
-  backCover.classList.add('back-cover', 'bg-book-cover', 'gray-border');
+  backCover.classList.add('back-cover', 'gray-border', 'bg-gradient');
+  backCover.style.backgroundColor = book.coverColor;
 
   bookContainer.append(backCover);
 
