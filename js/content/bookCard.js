@@ -54,11 +54,11 @@ function buildBookCard(book) {
 
   const controlContainer = buildDiv();
   controlContainer.classList.add(
-    'control-container', 'container', 'text-dark'
+    'control-container', 'container', 'text-dark', 'bg-light-blue'
   );
 
   const readToggleRow = buildDiv();
-  readToggleRow.classList.add('row', 'pt-2', 'pb-1', 'bg-light-blue', 'readToggleRow');
+  readToggleRow.classList.add('row', 'pt-2', 'pb-1', 'readToggleRow');
 
   const readColumn = buildDiv();
   readColumn.classList.add('col', 'h4', 'd-flex', 'align-items-center', 'justify-content-center', 'mb-0');
