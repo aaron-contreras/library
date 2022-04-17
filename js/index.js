@@ -40,6 +40,42 @@ const sampleBooks = [
     pages: 688,
     read: true
   },
+  {
+    title: 'Forward the Foundation',
+    author: 'Isaac Asimov',
+    pages: 434,
+    read: false
+  },
+  {
+    title: "Foundation's Edge",
+    author: 'Isaac Asimov',
+    pages: 449,
+    read: false
+  },
+  {
+    title: 'Prelude to Foundation',
+    author: 'Isaac Asimov',
+    pages: 493,
+    read: false
+  },
+  {
+    title: 'Second Foundation',
+    author: 'Isaac Asimov',
+    pages: 256,
+    read: false
+  },
+  {
+    title: 'Mark Zuckerbeg - In His Own Words',
+    author: 'George Beahm',
+    pages: 215,
+    read: true
+  },
+  {
+    title: 'Scar Island',
+    author: 'Dan Gemeinhart',
+    pages: 249,
+    read: true
+  },
 ]
 
 sampleBooks.forEach(bookAttributes => {
@@ -48,13 +84,16 @@ sampleBooks.forEach(bookAttributes => {
 
 // Display books
 function renderBooks() {
+  const rowContainer = document.createElement('div');
+  rowContainer.classList.add('container');
+
   const row = document.createElement('div');
   row.classList.add('row') ;
-  document.getElementById('book-collection').appendChild(row);
+  rowContainer.append(row);
 
   myLibrary.forEach(book => {
     const column = document.createElement('div');
-    column.classList.add('col-4');
+    column.classList.add('col', 'd-flex', 'justify-content-center', 'mb-2');
 
     row.appendChild(column);
 
@@ -62,6 +101,9 @@ function renderBooks() {
     column.appendChild(card);
     // document.getElementById('main-container').appendChild(card);
   });
+
+  // row.append(paddingColumn);
+  document.getElementById('book-collection').appendChild(rowContainer);
 }
 
 function reRenderBooks() {
