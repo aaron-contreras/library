@@ -11,6 +11,10 @@ function Book(attrs) {
     
     return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}`;
   }
+
+  this.toggleRead = () => {
+    this.read = !this.read;
+  }
 }
 
 function addBookToLibrary(bookAttributes) {
@@ -19,49 +23,30 @@ function addBookToLibrary(bookAttributes) {
   myLibrary.unshift(newBook);
 };
 
-// Sample addition to library
-
-const sampleBooks = [
-  {
-    title: 'People We Meet on Vacation',
-    author: 'Emily Henry',
-    pages: 364,
-    read: false
-  },
-  {
-    title: 'The Love Hypothesis',
-    author: 'Ali Hazelwood',
-    pages: 384,
-    read: false
-  },
-  {
-    title: 'Head First Java',
-    author: 'Katy Sierra',
-    pages: 688,
-    read: true
-  },
-]
-
 sampleBooks.forEach(bookAttributes => {
   addBookToLibrary(bookAttributes);
 });
 
 // Display books
 function renderBooks() {
+  const rowContainer = document.createElement('div');
+  rowContainer.classList.add('container');
+
   const row = document.createElement('div');
   row.classList.add('row') ;
-  document.getElementById('book-collection').appendChild(row);
+  rowContainer.append(row);
 
   myLibrary.forEach(book => {
     const column = document.createElement('div');
-    column.classList.add('col-4');
+    column.classList.add('col', 'd-flex', 'justify-content-center', 'mb-2');
 
     row.appendChild(column);
 
     const card = buildBookCard(book);
     column.appendChild(card);
-    // document.getElementById('main-container').appendChild(card);
   });
+
+  document.getElementById('book-collection').appendChild(rowContainer);
 }
 
 function reRenderBooks() {

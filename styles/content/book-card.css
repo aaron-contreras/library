@@ -1,0 +1,142 @@
+:root {
+  /* Starter dimensions
+  --book-container-width: 425px;
+  --book-container-height: 550px; */
+
+  --book-container-width: 260px;
+  --book-container-height: calc(var(--book-container-width) * 1.35);
+
+  --standard-border-width: calc(var(--book-container-width) * 0.04);
+  --pages-border-width: calc(var(--standard-border-width) * (2/3));
+
+  --front-cover-width: calc(var(--book-container-width) * 0.82);
+  --front-cover-height: calc(var(--book-container-height) * 0.91);
+
+  --highlight-height: calc(var(--front-cover-height) - var(--standard-border-width));
+  --highlight-top-border: calc(var(--highlight-height) * 0.82);
+  --highlight-right-border: calc(var(--front-cover-width) * 0.43);
+
+  --back-cover-width: calc(var(--book-container-width) * 0.35);
+  --back-cover-height: calc(var(--book-container-height) * 0.93);
+
+  --top-pages-left-offset: calc(var(--book-container-width) * 0.12);
+  --top-pages-height: calc(var(--book-container-height) - var(--front-cover-height) + (var(--standard-border-width)/2));
+  --top-pages-width: calc(var(--book-container-width) * 0.74);
+
+  --side-pages-width: calc(var(--book-container-width) * 0.21);
+  --side-pages-height: calc(var(--book-container-height) * 0.89);
+  --side-pages-bottom-offset: calc(var(--book-container-height) * 0.05);
+  --side-pages-right-offset: var(--side-pages-bottom-offset);
+
+  --book-title-font-size: calc(var(--book-container-width) * 0.105);
+  --book-author-font-size: calc(var(--book-title-font-size) * 0.45);
+  --book-pages-font-size: calc(var(--book-author-font-size) * 0.857);
+  --book-control-container-font-size: var(--book-author-font-size);
+}
+.bg-book-cover {
+  background-color:#6F1D1B;
+  background-color: #451F55;
+  background-color: #22162B;
+  background-color: #011638;
+  background-color: #A37B73;
+  background-color: #8E4A49;
+  background-color: #5F464B;
+  background-color: #4C1E4F;
+  background-color: #37371F;
+}
+.gray-border {
+  border-color: #222 !important;
+}
+
+.book-container {
+  width: var(--book-container-width);
+  height: var(--book-container-height);
+  position: relative;
+  font-size: 12px;
+}
+
+.book-container .book-title {
+  font-size: var(--book-title-font-size);
+}
+
+.book-container .book-author {
+  font-size: var(--book-author-font-size);
+}
+
+.book-container .book-pages {
+  font-size: var(--book-pages-font-size);
+}
+
+.book-container .control-container-fs {
+  font-size: var(--book-control-container-font-size);
+}
+
+.front-cover {
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  width: var(--front-cover-width);
+  height: var(--front-cover-height);
+  border: var(--standard-border-width) solid black;
+  border-radius: var(--standard-border-width) 0px 0px var(--standard-border-width);
+}
+
+.highlight {
+  height: var(--highlight-height);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 101;
+  border-top: var(--highlight-top-border) solid transparent;
+  border-right: var(--highlight-right-border) solid rgba(0,0,0,0.1);
+} 
+
+.back-cover {
+  position: absolute;
+  z-index: 0;
+  right:0;
+  top:0;
+  width: var(--back-cover-width);
+  height: var(--back-cover-height);
+  border: var(--standard-border-width) solid black;
+}
+
+.top-pages {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: var(--top-pages-left-offset);
+  height: var(--top-pages-height);
+  width: var(--top-pages-width);
+  border: var(--standard-border-width) solid black;
+  border-left: calc(var(--standard-border-width) * 2) solid black;
+  border-bottom: 0;
+  border-right: 0;
+  border-radius: var(--pages-border-width) 0px 0px var(--pages-border-width);
+  transform: skew(-60deg, 0deg);
+  background-image: repeating-linear-gradient(180deg, #000, #000 1px, #dbdbdb 1px, #dbdbdb 3px);
+}
+.side-pages {
+  position: absolute;
+  z-index: 2;
+  bottom: var(--side-pages-bottom-offset);
+  right: var(--side-pages-right-offset);
+  width: var(--side-pages-width);
+  height: var(--side-pages-height);
+  border: var(--pages-border-width) solid black;
+  border-right: calc(var(--pages-border-width) * 0.7) solid black;
+  transform: skew(0deg, -30deg);
+  background-image: repeating-linear-gradient(90deg, #000, #000 2px, #dbdbdb 2px, #dbdbdb 4px);
+}
+
+.control-container {
+  z-index: 10000 !important;
+}
+
+.control-container .row {
+  border-radius: 10px 10px 0 0 ;
+}
+
+.bg-light-blue {
+  background: rgba(237, 245, 252, 0.8);
+}
