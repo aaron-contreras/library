@@ -58,7 +58,7 @@ function buildBookCard(book) {
   );
 
   const readToggleRow = buildDiv();
-  readToggleRow.classList.add('row', 'pt-2', 'pb-1', 'readToggleRow');
+  readToggleRow.classList.add('row', 'pt-2', 'pb-2', 'readToggleRow');
 
   const readColumn = buildDiv();
   readColumn.classList.add('col', 'h4', 'd-flex', 'align-items-center', 'justify-content-center', 'mb-0');
@@ -103,9 +103,11 @@ function buildBookCard(book) {
   trashIcon.classList.add('bi', 'bi-trash');
   deleteButton.append(trashIcon);
   deleteButton.addEventListener('click', () => {
-    deleteBook(book)
-    reRenderBooks();
-    deleteButton.removeEventListener('click');
+    if (window.confirm("Are you sure you'd like to remove this book from your collection?")) {
+      deleteBook(book)
+      reRenderBooks();
+      deleteButton.removeEventListener('click');
+    }
   })
 
   buttonRow.append(deleteButton)

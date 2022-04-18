@@ -28,8 +28,9 @@
   --side-pages-bottom-offset: calc(var(--book-container-height) * 0.05);
   --side-pages-right-offset: var(--side-pages-bottom-offset);
 
-  --book-title-font-size: calc(var(--book-container-width) * 0.105);
+  --book-title-font-size: calc(var(--book-container-width) * 0.11);
   --book-author-font-size: calc(var(--book-title-font-size) * 0.45);
+  --book-author-font-size: 14px;
   --book-pages-font-size: calc(var(--book-author-font-size) * 0.857);
   --book-control-container-font-size: var(--book-author-font-size);
 }
