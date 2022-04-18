@@ -8,7 +8,6 @@ function deleteBook(book) {
 }
 
 function buildBookCard(book) {
-
   // Card container v2
   const bookContainer = buildDiv();
   bookContainer.classList.add('book-container', 'mx-2', 'mb-4');
@@ -48,7 +47,6 @@ function buildBookCard(book) {
   frontCover.append(details);
 
   // Control container
-
   const controlContainerWrapper = buildDiv();
   controlContainerWrapper.classList.add('container', 'control-container-wrapper');
 
@@ -84,7 +82,6 @@ function buildBookCard(book) {
   readToggleContainer.appendChild(readToggleLabel);
 
   // Attach handler for read toggle
-
   readToggleInput.addEventListener('click', (e) => {
     book.toggleRead();
     reRenderBooks();
@@ -120,16 +117,16 @@ function buildBookCard(book) {
   controlContainerWrapper.append(controlContainer);
 
   frontCover.append(controlContainerWrapper);
-  // Highlight
 
+  // Highlight
   const highlight = buildDiv();
   highlight.classList.add('highlight');
 
   frontCover.append(highlight);
 
   bookContainer.append(frontCover);
-  // Top Pages
 
+  // Top Pages
   const topPages = buildDiv();
   topPages.classList.add('top-pages', 'bg-light', 'gray-border');
 
