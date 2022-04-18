@@ -48,7 +48,14 @@ renderBooks();
 const newBookButton = document.getElementById('new-book-toggle');
 newBookButton.addEventListener('click', () => {
   document.getElementById('new-book-form').classList.toggle('d-none');
-  newBookButton.textContent = newBookButton.textContent === 'Add a book' ? 'Close form' : 'Add a book'
+  const newBookButtonTextTag = newBookButton.getElementsByTagName('span')[0];
+  const newBookButtonIconTag = newBookButton.getElementsByTagName('i')[0];
+
+
+  newBookButtonTextTag.textContent = newBookButtonTextTag.textContent === 'Add a book' ? 'Close form' : 'Add a book'
+  newBookButtonIconTag.classList.toggle('bi-plus-square-fill');
+  newBookButtonIconTag.classList.toggle('bi-x-square-fill');
+
   newBookButton.classList.toggle('bg-dark');
   // newBookButton.classList.toggle('mb-5');
 });
