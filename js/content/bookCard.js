@@ -103,9 +103,11 @@ function buildBookCard(book) {
   trashIcon.classList.add('bi', 'bi-trash');
   deleteButton.append(trashIcon);
   deleteButton.addEventListener('click', () => {
-    deleteBook(book)
-    reRenderBooks();
-    deleteButton.removeEventListener('click');
+    if (window.confirm("Are you sure you'd like to remove this book from your collection?")) {
+      deleteBook(book)
+      reRenderBooks();
+      deleteButton.removeEventListener('click');
+    }
   })
 
   buttonRow.append(deleteButton)
